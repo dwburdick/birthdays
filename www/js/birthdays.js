@@ -1,9 +1,21 @@
 var model = {
-
+	ageResult: {
+		1: "One",
+		2: "Two",
+		3: "Three",
+		4: "Four",
+		5: "Five",
+		6: "Six",
+		50: "Fifty",
+		51: "Fifty-one"
+	},
 };
 
 var controller = {
 	currentAge: 51,
+	getAgeResults: function(age) {
+		return model.ageResult[age];
+	},	
 };
 
 var viewSlider = {
@@ -16,13 +28,16 @@ var viewSlider = {
 			change: function(event, ui) {
 				currentAge = ui.value;
 				viewAge.render();
+				viewResult.render();				
 			},
 			slide: function(event, ui) {
 				controller.currentAge = ui.value;
 				viewAge.render();
+				viewResult.render();
 			},
 		});
 		viewAge.render();
+		viewResult.render();
 	},
 };
 
@@ -32,9 +47,10 @@ var viewAge = {
 	}
 }
 
-var viewResults = {
+var viewResult = {
 	render: function() {
-
+		var displayResult = controller.getAgeResults(controller.currentAge);
+		$("#result").text(displayResult);
 	},
 }
 
