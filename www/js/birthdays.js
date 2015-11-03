@@ -1,4 +1,5 @@
-var model = {
+var birthdayInit = function(defaultAge) {
+	var model = {
 	ageResult: {
 		1: "One",
 		2: "Two",
@@ -12,7 +13,7 @@ var model = {
 };
 
 var controller = {
-	currentAge: 51,
+	currentAge: defaultAge,
 	getAgeResults: function(age) {
 		return model.ageResult[age];
 	},	
@@ -55,3 +56,4 @@ var viewResult = {
 }
 
 viewSlider.render();
+}
