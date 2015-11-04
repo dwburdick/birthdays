@@ -7,6 +7,11 @@ var birthdayInit = function(defaultAge) {
 		4: "Four",
 		5: "Five",
 		6: "Six",
+		49: [
+			"Forty-nine",
+			"Forty and nine",
+			"One fewer than fifty"
+		],
 		50: "Fifty",
 		51: "Fifty-one"
 	},
@@ -15,7 +20,12 @@ var birthdayInit = function(defaultAge) {
 var controller = {
 	currentAge: defaultAge,
 	getAgeResults: function(age) {
-		return model.ageResult[age];
+		displayResult = model.ageResult[age];
+		if (model.ageResult[age] instanceof Array == false) {
+			printResult = displayResult;
+		} else { 
+			printResult = "prev. " + displayResult[0] + " next";
+		};
 	},	
 };
 
@@ -50,8 +60,8 @@ var viewAge = {
 
 var viewResult = {
 	render: function() {
-		var displayResult = controller.getAgeResults(controller.currentAge);
-		$("#result").text(displayResult);
+		controller.getAgeResults(controller.currentAge);
+		$("#result").text(printResult);
 	},
 }
 
