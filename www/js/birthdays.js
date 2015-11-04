@@ -31,6 +31,7 @@ var birthdayInit = function(defaultAge) {
 				controller.nextResult();
 			};
 		},
+		//the nextResult button loads -- and the code works in devtools -- but it must be scoped in some way that makes it not work
 		nextResult: function() {
 			$(document).ready(function(){
 				alert("triggered");
